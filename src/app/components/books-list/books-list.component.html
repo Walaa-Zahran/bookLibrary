@@ -1,0 +1,198 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="table-responsive" style="overflow-x: auto">
+        <button class="btn btn-info mx-auto d-block mb-2" (click)="sort()">
+          Sort List
+        </button>
+        <table class="table" class="sortTable">
+          <tr scope="row">
+            <th *ngFor="let item of cols" scope="col">
+              {{ item.header }}
+            </th>
+          </tr>
+
+          <tr *ngFor="let data of tableData; let i = index">
+            <td>{{ data.id }}</td>
+            <td>
+              {{ data.listTitle }}
+            </td>
+            <td>{{ data.bookTitle }}</td>
+            <td>{{ data.authorName }}</td>
+            <td>{{ data.yearOfPublishing }}</td>
+            <td>
+              <img
+                src="{{ data.coverImage }}"
+                alt="{{ data.bookTitle }}"
+                width="100"
+                height="100"
+              />
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteRow(i)">
+                Delete
+              </button>
+            </td>
+          </tr>
+
+          <tr
+            *ngIf="this.localStorage.getData(this.bookForm.value)"
+            class="ay7aga"
+          >
+            <td>
+              {{ this.bookForm.value.listTitle }}
+            </td>
+            <td>{{ this.bookForm.value.bookTitle }}</td>
+            <td>{{ this.bookForm.value.authorName }}</td>
+            <td>{{ this.bookForm.value.yearOfPublishing }}</td>
+            <td>
+              <img
+                src="{{ this.bookForm.value.coverImage }}"
+                alt="{{ this.bookForm.value.bookTitle }}"
+                width="100"
+                height="100"
+              />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card mt-3">
+        <div class="card-header">
+          <h3>Book List</h3>
+        </div>
+        <div class="card-body">
+          <legend>Add Your List</legend>
+          <form
+            class="form"
+            [formGroup]="bookForm"
+            (ngSubmit)="onSubmit()"
+            #form="ngForm"
+          >
+            <div
+              class="form-group"
+
+            >
+              <label>Rank</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="id"
+                placeholder="please enter the rank of the book for you"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                (bookFormControl['id'].invalid|| bookFormControl['id'].touched || submitted) &&
+                bookFormControl['id'].errors?.['required']
+              "
+              >
+                ID is required
+              </span>
+            </div>
+            <div
+              class="form-group"
+            >
+              <label>List's Title</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="listTitle"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                (bookFormControl['listTitle'].invalid|| bookFormControl['listTitle'].touched || submitted) &&
+                bookFormControl['listTitle'].errors?.['required']
+              "
+              >
+                List's Title is required
+              </span>
+            </div>
+            <div class="form-group">
+              <label>Book's Title</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="bookTitle"
+                required
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (bookFormControl['bookTitle'].invalid|| bookFormControl['bookTitle'].touched || submitted) &&
+                  bookFormControl['bookTitle'].errors?.['required']
+                "
+              >
+                Book's Title is required
+              </span>
+            </div>
+            <div class="form-group">
+              <label>Author's Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="authorName"
+                required
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (bookFormControl['authorName'].invalid||bookFormControl['authorName'].touched || submitted) &&
+                  bookFormControl['authorName'].errors?.['required']
+                "
+              >
+                Author's Name is required
+              </span>
+            </div>
+            <div class="form-group">
+              <label>Publishing's Year</label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="yearOfPublishing"
+                required
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (bookFormControl['yearOfPublishing'].invalid||bookFormControl['yearOfPublishing'].touched || submitted) &&
+                  bookFormControl['yearOfPublishing'].errors?.['required']
+                "
+              >
+                Publishing's Year is required
+              </span>
+            </div>
+            <div class="form-group">
+              <label>Cover Image</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="coverImage"
+                placeholder="please insert the link of image's book"
+                required
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                (bookFormControl['coverImage'].invalid||bookFormControl['coverImage'].touched || submitted) &&
+                bookFormControl['coverImage'].errors?.['required']
+              "
+              >
+                Cover Image of Book is required
+              </span>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-success mt-3">
+                Add List
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

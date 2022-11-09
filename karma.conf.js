@@ -25,6 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
+      /* eslint @typescript-eslint/no-var-requires: "off" */
       dir: require('path').join(__dirname, './coverage/angular-forms-validation'),
       subdir: '.',
       reporters: [
@@ -40,5 +41,5 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: false,
     restartOnFileChange: true
-  });
-};
+  })
+}

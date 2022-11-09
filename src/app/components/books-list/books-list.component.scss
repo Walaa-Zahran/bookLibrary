@@ -1,0 +1,16 @@
+table {
+  text-align: center;
+  width: 100%;
+  th {
+    border: 1px solid #000;
+  }
+  tr {
+    border: 1px solid #000;
+  }
+  td {
+    border: 1px solid #000;
+  }
+}
+.table > :not(caption) > * > * {
+  background-color: #f93154 !important;
+}
