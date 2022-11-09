@@ -11,13 +11,13 @@ import { BookFormValidationService } from '../../book-form-validation.service'
 export class BooksListComponent implements OnInit {
   bookForm!: FormGroup
   tableData: Book[] = []
-  cols: any[] = []
+  cols: Book[] = []
   submitted = false
 
   constructor (
     private readonly fb: FormBuilder,
     public localStorage: BookFormValidationService
-  ) {}
+  ) { }
 
   ngOnInit (): void {
     this.cols = [
@@ -92,6 +92,7 @@ export class BooksListComponent implements OnInit {
   }
 
   get bookFormControl () {
+    console.log(typeof (this.bookForm.controls))
     return this.bookForm.controls
   }
 

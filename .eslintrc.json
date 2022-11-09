@@ -1,23 +1,50 @@
 {
-
-  "extends": [
-    "standard-with-typescript",
-    "plugin:@typescript-eslint/recommended"
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
   ],
-    "parserOptions": {
-    "project":"./tsconfig.json",
-    "ecmaVersion": 12,
-    "sourceType": "module",
-    "parser": "babel-eslint"
-
-  },"plugins": [
-    "@typescript-eslint"
-
-  ],
-  "rules": {
-    "@typescript-eslint/no-var-requires":1,
-    "@typescript-eslint/no-unused-vars":1,
-    "@typescript-eslint/no-explicit-any":0,
-    "@typescript-eslint/explicit-function-return-type":0
-  }
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    }
+  ]
 }

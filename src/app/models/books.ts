@@ -1,4 +1,6 @@
 export interface Book {
+  field?: string
+  header?: string
   id?: number
   listTitle?: string
   bookTitle?: string

@@ -26,12 +26,9 @@ module.exports = function (config) {
     },
     coverageReporter: {
       /* eslint @typescript-eslint/no-var-requires: "off" */
-      dir: require('path').join(__dirname, './coverage/angular-forms-validation'),
+      dir: require('path').join(__dirname, './coverage/BookStore'),
       subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+      reporters: [{ type: 'html' }, { type: 'text-summary' }]
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,

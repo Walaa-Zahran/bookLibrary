@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core'
-import { ReactiveFormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
 import { AppComponent } from './app.component'
 import { BooksListComponent } from './components/books-list/books-list.component'
@@ -19,11 +18,12 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs'
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip'
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 @NgModule({
   declarations: [AppComponent, BooksListComponent],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     MdbAccordionModule,
     MdbCarouselModule,
@@ -41,8 +41,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

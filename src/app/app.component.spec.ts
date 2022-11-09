@@ -1,3 +1,5 @@
+import { BookFormValidationService } from './book-form-validation.service'
+import { ReactiveFormsModule } from '@angular/forms'
 import { TestBed } from '@angular/core/testing'
 import { AppComponent } from './app.component'
 
@@ -6,7 +8,12 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent
-      ]
+      ],
+      imports: [
+        ReactiveFormsModule
+      ],
+      providers: [
+        BookFormValidationService]
     }).compileComponents()
   })
 
@@ -16,16 +23,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy()
   })
 
-  it('should have as title \'angular-forms-validation\'', () => {
+  it('should have as title \'BookStore\'', () => {
     const fixture = TestBed.createComponent(AppComponent)
     const app = fixture.componentInstance
-    expect(app.title).toEqual('angular-forms-validation')
+    expect(app.title).toEqual('BookStore')
   })
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent)
     fixture.detectChanges()
-    const compiled = fixture.nativeElement as HTMLElement
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-forms-validation app is running!')
+    const compiled = fixture.debugElement.componentInstance
+    expect(compiled.title).toEqual('BookStore')
   })
 })
