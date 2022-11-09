@@ -1,4 +1,6 @@
 <div class="container py-5">
+  <!--Table which consists of given list in pdf -->
+
   <div class="row">
     <div class="col-sm-12">
       <div class="table-responsive" style="overflow-x: auto">
@@ -58,6 +60,7 @@
       </div>
     </div>
   </div>
+  <!--Form to add Your List-->
   <div class="row">
     <div class="col-md-8 mx-auto">
       <div class="card mt-3">
@@ -72,10 +75,7 @@
             (ngSubmit)="onSubmit()"
             #form="ngForm"
           >
-            <div
-              class="form-group"
-
-            >
+            <div class="form-group">
               <label>Rank</label>
               <input
                 type="text"
@@ -90,12 +90,10 @@
                 bookFormControl['id'].errors?.['required']
               "
               >
-                ID is required
+                Rank is required
               </span>
             </div>
-            <div
-              class="form-group"
-            >
+            <div class="form-group">
               <label>List's Title</label>
               <input
                 type="text"

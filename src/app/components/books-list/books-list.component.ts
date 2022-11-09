@@ -14,16 +14,17 @@ export class BooksListComponent implements OnInit {
   cols: Book[] = []
   submitted = false
 
-  constructor (
+  constructor(
     private readonly fb: FormBuilder,
     public localStorage: BookFormValidationService
   ) { }
 
-  ngOnInit (): void {
+  ngOnInit(): void {
+    //define the table fields
     this.cols = [
       {
         field: 'id',
-        header: '#'
+        header: 'Rank'
       },
       {
         field: 'listTitle',
@@ -81,6 +82,7 @@ export class BooksListComponent implements OnInit {
           'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1575509280l/5129._SY475_.jpg'
       }
     ]
+    //form group and their controls
     this.bookForm = this.fb.group({
       id: ['', Validators.required],
       listTitle: ['', Validators.required],
@@ -90,19 +92,18 @@ export class BooksListComponent implements OnInit {
       coverImage: ['', Validators.required]
     })
   }
-
-  get bookFormControl () {
+  //get controls of the form
+  get bookFormControl() {
     console.log(typeof (this.bookForm.controls))
     return this.bookForm.controls
   }
-
-  text = []
-  sort (): void {
+  //sort the table on click the sort button depending on ranking
+  sort(): void {
     this.tableData.sort((a, b) => 0 - (a > b ? -1 : 1))
     console.log(this.tableData)
   }
-
-  onSubmit (): void {
+  //submitting the form
+  onSubmit(): void {
     if (this.bookForm.valid) {
       this.localStorage.saveData(
         'formValue',
@@ -117,8 +118,8 @@ export class BooksListComponent implements OnInit {
     this.localStorage.getData(this.bookForm.value)
     this.bookForm.reset()
   }
-
-  deleteRow (x: any): void {
+  //delete rows from the table
+  deleteRow(x: any): void {
     const delBtn = confirm(' Do you want to delete ?')
     if (delBtn) {
       this.tableData.splice(x, 1)
