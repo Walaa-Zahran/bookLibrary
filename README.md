@@ -22,3 +22,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 `npm run lint`
 ## Link
 https://idyllic-marigold-8af015.netlify.app
+## Screenshot
+(screen-capture.gif)[screen-capture.gif]
